@@ -45,11 +45,11 @@ jobs:
           POSTGRES_PASSWORD: postgres
 
     env:
-      USER": 'postgres'
-      PASSWORD": 'postgres'
-      HOST": 'localhost'
-      PORT": '5432'
-      NAME": 'postgres'
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: postgres
 
     steps:
       - name: Checkout Code Repository
