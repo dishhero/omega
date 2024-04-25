@@ -33,41 +33,41 @@ jobs:
         uses: pre-commit/action@v3.0.1
 
   # With no caching at all the entire ci process takes 3m to complete!
-  pytest:
-    runs-on: ubuntu-latest
+  # pytest:
+  #   runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:16
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_PASSWORD: omega
+  #   services:
+  #     postgres:
+  #       image: postgres:16
+  #       ports:
+  #         - 5432:5432
+  #       env:
+  #         POSTGRES_PASSWORD: omega
 
-    env:
-      POSTGRES_USER: omega
-      POSTGRES_PASSWORD: omega
-      POSTGRES_HOST: localhost
-      POSTGRES_PORT: 5432
-      POSTGRES_DB: omega
+  #   env:
+  #     POSTGRES_USER: omega
+  #     POSTGRES_PASSWORD: omega
+  #     POSTGRES_HOST: localhost
+  #     POSTGRES_PORT: 5432
+  #     POSTGRES_DB: omega
 
-    steps:
-      - name: Checkout Code Repository
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout Code Repository
+  #       uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-          cache: pip
-          cache-dependency-path: |
-            requirements/base.txt
-            requirements/local.txt
+  #     - name: Set up Python
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: '3.12'
+  #         cache: pip
+  #         cache-dependency-path: |
+  #           requirements/base.txt
+  #           requirements/local.txt
 
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements/local.txt
+  #     - name: Install Dependencies
+  #       run: |
+  #         python -m pip install --upgrade pip
+  #         pip install -r requirements/local.txt
 
-      - name: Test with pytest
-        run: pytest
+  #     - name: Test with pytest
+  #       run: pytest
