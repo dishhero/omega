@@ -1,0 +1,56 @@
+services:
+  # ---------------------------------- #
+  postgres:
+    # postgres://omega:omega@10.5.0.10:5432/omega
+    build:
+      context: .
+      dockerfile: ./postgres/Dockerfile
+    container_name: omega_postgres
+    restart: unless-stopped
+    volumes: 
+      - omega_postgres_data:/var/lib/postgresql/data
+      - omega_postgres_data_backups:/backups
+    env_file:
+      - ./../../.env.dev
+    logging:
+      options:
+        max-size: 10m
+        max-file: "2"
+    networks:
+      dnd-network:
+        ipv4_address: 10.5.0.10
+    ports: ['5432:5432']
+  # ---------------------------------- #
+  redis:
+    # redis://10.5.0.11:6379
+    image: redis:7.2.4-alpine
+    container_name: omega_redis
+    restart: 'no' # prevent auto-start
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      dnd-network:
+        ipv4_address: 10.5.0.11
+    ports: ['6379:6379']
+  # ---------------------------------- #
+  mailpit:
+    # http://10.5.0.12:8025
+    image: docker.io/axllent/mailpit:latest
+    container_name: omega_mailpit
+    networks:
+      dnd-network:
+        ipv4_address: 10.5.0.12
+    ports: ['8025:8025']
+# ------------------------------------ #
+
+volumes:
+  omega_postgres_data: {}
+  omega_postgres_data_backups: {}
+
+networks:
+  dnd-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
