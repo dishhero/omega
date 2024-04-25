@@ -42,7 +42,7 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: omega
 
     env:
       POSTGRES_USER: omega
