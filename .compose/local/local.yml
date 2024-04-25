@@ -11,7 +11,7 @@ services:
       - omega_postgres_data:/var/lib/postgresql/data
       - omega_postgres_data_backups:/backups
     env_file:
-      - ./../../.env.dev
+      - ./../../.env/.env.dev
     logging:
       options:
         max-size: 10m

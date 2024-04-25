@@ -13,11 +13,12 @@ env = environ.Env()
 RUNNING_AS = env.str("RUNNING_AS", default="test")
 # OS environment variables take precedence over variables from .env
 if RUNNING_AS == "dev":
-    env.read_env(Path(str(BASE_DIR)) / ".env.dev")
+    env.read_env(Path(str(BASE_DIR)).joinpath(".env").joinpath(".env.dev"))
 elif RUNNING_AS == "test":
-    env.read_env(Path(str(BASE_DIR)) / ".env.test")
+    env.read_env(Path(str(BASE_DIR)).joinpath(".env").joinpath(".env.test"))
 elif RUNNING_AS == "prod":
-    env.read_env(Path(str(BASE_DIR)) / ".env.prod")
+    env.read_env(Path(str(BASE_DIR)).joinpath(".env").joinpath(".env.prod"))
+
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
