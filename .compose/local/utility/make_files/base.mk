@@ -39,7 +39,7 @@ ifeq ($(shell uname -s), Darwin)
         $(error "gawk not found")
     endif
 endif
-help: 
+help:
 	@printf "Usage: make <command>\n"
 	@grep -F -h "##@" $(MAKEFILE_LIST) | grep -F -v grep -F | sed -e 's/\\$$//' | $(AWK) 'BEGIN {FS = ":*[[:space:]]*##@[[:space:]]*"}; \
 	{ \

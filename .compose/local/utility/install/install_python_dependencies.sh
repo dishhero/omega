@@ -18,7 +18,7 @@ if [ ! -r "$(pyenv root)/versions/$REQ_PYTHON/envs/$REQ_VENV" ]; then
     pyenv virtualenv --system-site-packages $REQ_PYTHON $REQ_VENV
 else
     eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)" 
+    eval "$(pyenv virtualenv-init -)"
     eval "$(pyenv activate $REQ_VENV)"
 
     echo "--> Installing requirements/local.txt in $REQ_VENV"

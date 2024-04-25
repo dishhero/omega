@@ -13,9 +13,9 @@ env = environ.Env()
 RUNNING_AS = env.str("RUNNING_AS", default="dev_container")
 # OS environment variables take precedence over variables from .env
 if RUNNING_AS == "dev":
-    env.read_env(Path(str(BASE_DIR)) / '.env.dev')
+    env.read_env(Path(str(BASE_DIR)) / ".env.dev")
 elif RUNNING_AS == "prod":
-    env.read_env(Path(str(BASE_DIR)) / '.env.prod')
+    env.read_env(Path(str(BASE_DIR)) / ".env.prod")
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -31,9 +31,9 @@ LANGUAGE_CODE = "en-us"
 # https://docs.djangoproject.com/en/dev/ref/settings/#languages
 # from django.utils.translation import gettext_lazy as _
 LANGUAGES = [
-    ('en', ('English')),
-    ('fr-fr', ('French')),
-    ('pt-br', ('Portuguese')),
+    ("en", ("English")),
+    ("fr-fr", ("French")),
+    ("pt-br", ("Portuguese")),
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -48,14 +48,14 @@ LOCALE_PATHS = [str(BASE_DIR / "locale")]
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'USER': env.str("POSTGRES_USER"),
-        'PASSWORD': env.str("POSTGRES_PASSWORD"),
-        'HOST': env.str("POSTGRES_HOST"),
-        'PORT': env.str("POSTGRES_PORT"),
-        'NAME': env.str("POSTGRES_DB"),
-    }
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "USER": env.str("POSTGRES_USER"),
+        "PASSWORD": env.str("POSTGRES_PASSWORD"),
+        "HOST": env.str("POSTGRES_HOST"),
+        "PORT": env.str("POSTGRES_PORT"),
+        "NAME": env.str("POSTGRES_DB"),
+    },
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
@@ -91,7 +91,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
     "allauth.socialaccount.providers.facebook",
-    'allauth.socialaccount.providers.apple',
+    "allauth.socialaccount.providers.apple",
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",

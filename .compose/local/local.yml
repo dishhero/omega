@@ -7,7 +7,7 @@ services:
       dockerfile: ./postgres/Dockerfile
     container_name: omega_postgres
     restart: unless-stopped
-    volumes: 
+    volumes:
       - omega_postgres_data:/var/lib/postgresql/data
       - omega_postgres_data_backups:/backups
     env_file:
