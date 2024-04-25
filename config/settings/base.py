@@ -10,13 +10,14 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 APPS_DIR = BASE_DIR / "omega"
 env = environ.Env()
 
-RUNNING_AS = env.str("RUNNING_AS", default="dev_container")
+RUNNING_AS = env.str("RUNNING_AS", default="test")
 # OS environment variables take precedence over variables from .env
 if RUNNING_AS == "dev":
     env.read_env(Path(str(BASE_DIR)) / ".env.dev")
 elif RUNNING_AS == "prod":
     env.read_env(Path(str(BASE_DIR)) / ".env.prod")
-
+elif RUNNING_AS == "test":
+    env.read_env(Path(str(BASE_DIR)) / ".env.test")
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug

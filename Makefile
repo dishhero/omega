@@ -30,9 +30,11 @@ local_update: ##@ (LOCAL) update dependencies
 	@source $(PATH_UTILS)/install/install_python_dependencies.sh
 
 local_run: ##@ (LOCAL) Run Django server
-	RUNNING_AS=dev $(MANAGE_PY) migrate;
+	RUNNING_AS=dev $(MANAGE_PY) migrate
 	RUNNING_AS=dev $(MANAGE_PY) runserver 0.0.0.0:8000
 
 local_precommit:
 	pre-commit install; pre-commit run --all-files;
 # --------------------------------------------------- #
+run_tests:
+	pytest
